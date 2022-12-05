@@ -57,5 +57,5 @@ with open('finalized_model.sav', 'rb') as f:
 @app.post('/')
 async def detect(item:detection):
     df = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
-    yhat = model.predict(df)
-    return {"prediction:": int(yhat)}
+    result = model.predict(df)
+    return {"prediction:": int(result)}
