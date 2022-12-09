@@ -54,7 +54,7 @@ class detection(BaseModel):
 with open('finalized_model.sav', 'rb') as f:
   model = pickle.load(f)
 
-@app.get('/')
+@app.post('/')
 async def detect(item:detection):
     df = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
     result = model.predict(df)
