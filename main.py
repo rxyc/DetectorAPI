@@ -58,4 +58,5 @@ with open('finalized_model.sav', 'rb') as f:
 async def detect(item:detection):
     df = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
     result = model.predict(df)
-    return {"prediction:": int(result)}
+    content = {"prediction": int(result)}
+    headers = {"Access-Control-Allow-Origin": "*"}
