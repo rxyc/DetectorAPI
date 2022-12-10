@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import pickle
 import pandas as pd
@@ -60,3 +61,5 @@ async def detect(item:detection):
     result = model.predict(df)
     content = {"prediction": int(result)}
     headers = {"Access-Control-Allow-Origin": "*"}
+    
+    return JSONResponse(content=content, headers=headers)
