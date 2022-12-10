@@ -60,6 +60,6 @@ async def detect(item:detection):
     df = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
     result = model.predict(df)
     content = {"prediction": int(result)}
-    headers = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS"}
+    headers = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS, GET, PUT, DELETE"}
     
     return JSONResponse(content=content, headers=headers)
